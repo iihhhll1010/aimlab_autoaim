@@ -8,114 +8,113 @@ using namespace std;
 using namespace cv;
 
 void moveMouse(int dx, int dy) {
-    // ¼ÆËãÊó±êÒÆ¶¯ÊÂ¼ş
     INPUT input = { 0 };
     input.type = INPUT_MOUSE;
     input.mi.dx = dx;
     input.mi.dy = dy;
-    input.mi.dwFlags = MOUSEEVENTF_MOVE; // ÉèÖÃÎªÒÆ¶¯ÊÂ¼ş
+    input.mi.dwFlags = MOUSEEVENTF_MOVE; // è®¾ç½®ä¸ºç§»åŠ¨äº‹ä»¶
     input.mi.mouseData = 0;
     input.mi.dwExtraInfo = 0;
 
-    // µ÷ÓÃ SendInput º¯Êı·¢ËÍÊÂ¼ş
-    SendInput(1, &input, sizeof(INPUT));  // ·¢ËÍÒ»¸öÊäÈëÊÂ¼ş
+    //è°ƒç”¨ SendInput å‡½æ•°å‘é€äº‹ä»¶
+    SendInput(1, &input, sizeof(INPUT));
 }
 
 void clickMouse() {
-    // Ä£ÄâÊó±êµã»÷£º°´ÏÂºÍÌ§Æğ
+    //æ¨¡æ‹Ÿé¼ æ ‡ç‚¹å‡»ï¼šæŒ‰ä¸‹å’ŒæŠ¬èµ·
     INPUT input[2] = { 0 };
 
-    // °´ÏÂÊó±ê×ó¼ü
+    //æŒ‰ä¸‹é¼ æ ‡å·¦é”®
     input[0].type = INPUT_MOUSE;
     input[0].mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
     input[0].mi.mouseData = 0;
     input[0].mi.dwExtraInfo = 0;
 
-    // Ì§ÆğÊó±ê×ó¼ü
+    //æŠ¬èµ·é¼ æ ‡å·¦é”®
     input[1].type = INPUT_MOUSE;
     input[1].mi.dwFlags = MOUSEEVENTF_LEFTUP;
     input[1].mi.mouseData = 0;
     input[1].mi.dwExtraInfo = 0;
 
-    // ·¢ËÍ°´ÏÂºÍÌ§ÆğÊó±ê×ó¼üµÄÊÂ¼ş
-    SendInput(2, input, sizeof(INPUT));  // ·¢ËÍÁ½¸öÊäÈëÊÂ¼ş£º°´ÏÂºÍÌ§Æğ
+    //å‘é€æŒ‰ä¸‹å’ŒæŠ¬èµ·é¼ æ ‡å·¦é”®çš„äº‹ä»¶
+    SendInput(2, input, sizeof(INPUT));
 }
 
-//»ñÈ¡¾ØĞÎµÄÖĞĞÄµã
+//è·å–çŸ©å½¢çš„ä¸­å¿ƒç‚¹
 Point getCenterPoint(const Rect& rect) {
-    //»ñÈ¡¾ØĞÎ×óÉÏ½Ç×ø±êÒÔ¼°¿í¸ß
+    //è·å–çŸ©å½¢å·¦ä¸Šè§’åæ ‡ä»¥åŠå®½é«˜
     int x = rect.x, y = rect.y, width = rect.width, height = rect.height;
     int centerx = x + width / 2, centery = y + height / 2;
     return Point(centerx, centery);
 }
 
 int main() {
-    //»ñÈ¡´°¿Ú¾ä±ú
+    //è·å–çª—å£å¥æŸ„
     HWND hwnd = getWindowHWND();
     if (hwnd != NULL) {
-        cout << "ÕÒµ½´°¿Ú¾ä±ú: " << hwnd << endl;
+        cout << "æ‰¾åˆ°çª—å£å¥æŸ„: " << hwnd << endl;
     }
     else {
-        cout << "Î´ÕÒµ½·ûºÏÌõ¼şµÄ´°¿Ú¡£" << endl;
+        cout << "æœªæ‰¾åˆ°ç¬¦åˆæ¡ä»¶çš„çª—å£ã€‚" << endl;
         return 0;
     }
 
-    //¸ù¾İ´°¿Ú¾ä±ú£¬´´½¨WindowShotÊµÀı
+    //æ ¹æ®çª—å£å¥æŸ„ï¼Œåˆ›å»ºWindowShotå®ä¾‹
     WindowShot windowShot(hwnd);
-    //»ñÈ¡´°¿ÚÖĞĞÄ×ø±ê
+    //è·å–çª—å£ä¸­å¿ƒåæ ‡
     int centerWindowX = windowShot.x + windowShot.width / 2;
     int centerWindowY = windowShot.y + windowShot.height / 2;
     cout << centerWindowX << "," << centerWindowY << endl;
-    Scalar lower_cyan(82, 205, 144);  // ÇàÉ«ÏÂ½ç
-    Scalar upper_cyan(255, 255, 255);  // ÇàÉ«ÉÏ½ç
+    Scalar lower_cyan(82, 205, 144);  // é’è‰²ä¸‹ç•Œ
+    Scalar upper_cyan(255, 255, 255);  // é’è‰²ä¸Šç•Œ
 
     namedWindow("result", WINDOW_FREERATIO);
     moveWindow("result", 0, 0);
     resizeWindow("result", Size(1280, 720));
 
     while (1) {
-        //»ñÈ¡´°¿Ú½ØÍ¼
+        //è·å–çª—å£æˆªå›¾
         Mat src = windowShot.getWindowMat();
-        //¼ì²éÍ¼ÏñÊÇ·ñ»ñÈ¡³É¹¦
+        //æ£€æŸ¥å›¾åƒæ˜¯å¦è·å–æˆåŠŸ
         if (src.empty()) {
             break;
         }
 
-        //BGR×ªHSV
+        //BGRè½¬HSV
         Mat hsv;
         cvtColor(src, hsv, COLOR_BGR2HSV);
 
-        //¶şÖµ»¯
+        //äºŒå€¼åŒ–
         Mat binary;
         inRange(hsv, lower_cyan, upper_cyan, binary);
 
-        //ÕÒµ½Í¼ÏñÖĞµÄÂÖÀª
+        //æ‰¾åˆ°å›¾åƒä¸­çš„è½®å»“
         vector<vector<Point>> contours;
         vector<Vec4i> hierarchy;
         findContours(binary, contours, hierarchy, RETR_LIST, CHAIN_APPROX_SIMPLE);
 
-        //»æÖÆÂÖÀª²¢¼ÆËãÖĞĞÄµã
+        //ç»˜åˆ¶è½®å»“å¹¶è®¡ç®—ä¸­å¿ƒç‚¹
         Mat result = src.clone();
-        vector<Rect> rects;//ÓÃÓÚ´æ´¢¼ì²âµ½µÄÂÖÀª¾ØĞÎ
+        vector<Rect> rects;//ç”¨äºå­˜å‚¨æ£€æµ‹åˆ°çš„è½®å»“çŸ©å½¢
         for (const auto& contour : contours) {
-            //ÓÃ×îĞ¡Íâ½Ó¾ØĞÎÀ´¿ò×¡ÂÖÀª
+            //ç”¨æœ€å°å¤–æ¥çŸ©å½¢æ¥æ¡†ä½è½®å»“
             Rect boundingBox = boundingRect(contour);
             rects.push_back(boundingBox);
-            rectangle(result, boundingBox, Scalar(0, 0, 255), 2); //»æÖÆ¾ØĞÎ¿ò
+            rectangle(result, boundingBox, Scalar(0, 0, 255), 2); //ç»˜åˆ¶çŸ©å½¢æ¡†
         }
 
-        //¼ÆËãÄ¿±êÎïÌåÓëÖĞĞÄµÄÆ«ÒÆÁ¿,²¢É¸Ñ¡×îĞ¡Öµ
+        //è®¡ç®—ç›®æ ‡ç‰©ä½“ä¸ä¸­å¿ƒçš„åç§»é‡,å¹¶ç­›é€‰æœ€å°å€¼
         int target_dx = INT_MAX, target_dy = INT_MAX, min_dis = INT_MAX;
         for (const auto& rect : rects) {
-            //»ñÈ¡¾ØĞÎÖĞĞÄµã
+            //è·å–çŸ©å½¢ä¸­å¿ƒç‚¹
             Point rectCenter = getCenterPoint(rect);
-            //ÔÚÖĞĞÄµã»æÖÆÔ²È¦
+            //åœ¨ä¸­å¿ƒç‚¹ç»˜åˆ¶åœ†åœˆ
             circle(result, rectCenter, 8, Scalar(255, 0, 0), -1);
-            //¼ÆËãx£¬y·½ÏòµÄÆ«ÒÆÁ¿
+            //è®¡ç®—xï¼Œyæ–¹å‘çš„åç§»é‡
             int dx = rectCenter.x - centerWindowX + windowShot.x;
             int dy = rectCenter.y - centerWindowY + windowShot.y;
-            dy += 15;//±êÌâÎó²îĞŞÕı
-            //¼ÆËã¾àÀë×î½üµÄµã
+            dy += 15;//æ ‡é¢˜è¯¯å·®ä¿®æ­£
+            //è®¡ç®—è·ç¦»æœ€è¿‘çš„ç‚¹
             if (dx * dx + dy * dy < min_dis) {
                 min_dis = dx * dx + dy * dy;
                 target_dx = dx;
@@ -123,18 +122,18 @@ int main() {
             }
         }
 
-        //²Ù¿ØÊó±êÒÆ¶¯²¢µã»÷
+        //æ“æ§é¼ æ ‡ç§»åŠ¨å¹¶ç‚¹å‡»
         if (min_dis < INT_MAX) {
-            //ÒÆ¶¯µ½Ä¿±êµã
+            //ç§»åŠ¨åˆ°ç›®æ ‡ç‚¹
             moveMouse(target_dx, target_dy);
-            //µã»÷
+            //ç‚¹å‡»
             if (min_dis < 900) {
                 clickMouse();
             }
         }
         imshow("result", result);
         waitKey(1);
-        //ÊÍ·ÅÄÚ´æ
+        //é‡Šæ”¾å†…å­˜
         src.release();
         hsv.release();
         binary.release();
