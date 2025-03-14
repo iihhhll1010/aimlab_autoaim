@@ -1,0 +1,22 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "MSVC",
+	"compiler-id" : "MSVC",
+	"compiler-simulate-id" : "",
+	"config" : "Debug",
+	"cxx-modules" : {},
+	"dir-cur-bld" : "D:/Document/UGit/code/opencv411/cmake-build-debug",
+	"dir-cur-src" : "D:/Document/UGit/code/opencv411",
+	"dir-top-bld" : "D:/Document/UGit/code/opencv411/cmake-build-debug",
+	"dir-top-src" : "D:/Document/UGit/code/opencv411",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"D:\\Document\\UGit\\code\\opencv\\build\\include",
+		"D:\\Document\\UGit\\code\\opencv\\build\\include\\opencv2"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "D:/Document/UGit/code/opencv411/cmake-build-debug/CMakeFiles/aimlab_autoaim_main.dir"
+}

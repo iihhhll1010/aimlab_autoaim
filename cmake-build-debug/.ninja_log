@@ -1,0 +1,13 @@
+# ninja log v6
+1	406	7636581282010242	CMakeFiles/opencv4110.dir/main.cpp.obj.ddi	2dda16e965a0f732
+427	446	7636581286409247	CMakeFiles/opencv4110.dir/CXX.dd	7895e5a491c302e2
+427	446	7636581286409247	D:/Document/UGit/code/opencv411/cmake-build-debug/CMakeFiles/opencv4110.dir/CXXModules.json	7895e5a491c302e2
+427	446	7636581286409247	CMakeFiles/opencv4110.dir/main.cpp.obj.modmap	7895e5a491c302e2
+446	2808	7636581286464342	CMakeFiles/opencv4110.dir/main.cpp.obj	68f16a84cf71fb4d
+2808	3126	7636581310079796	opencv4110.exe	5e576c99a88cabe6
+1	319	7636583585776076	CMakeFiles/opencv4110.dir/main.cpp.obj.ddi	2dda16e965a0f732
+341	394	7636583589185211	CMakeFiles/opencv4110.dir/CXX.dd	7895e5a491c302e2
+341	394	7636583589185211	D:/Document/UGit/code/opencv411/cmake-build-debug/CMakeFiles/opencv4110.dir/CXXModules.json	7895e5a491c302e2
+341	394	7636583589185211	CMakeFiles/opencv4110.dir/main.cpp.obj.modmap	7895e5a491c302e2
+394	2862	7636583589711501	CMakeFiles/opencv4110.dir/main.cpp.obj	68f16a84cf71fb4d
+2862	2994	7636583614391943	opencv4110.exe	5e576c99a88cabe6

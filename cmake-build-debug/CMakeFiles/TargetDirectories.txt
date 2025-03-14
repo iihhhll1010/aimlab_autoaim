@@ -1,0 +1,3 @@
+D:/Document/UGit/code/opencv411/cmake-build-debug/CMakeFiles/opencv4110.dir
+D:/Document/UGit/code/opencv411/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Document/UGit/code/opencv411/cmake-build-debug/CMakeFiles/rebuild_cache.dir

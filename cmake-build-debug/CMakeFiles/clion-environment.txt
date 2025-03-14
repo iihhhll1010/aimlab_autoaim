@@ -1,0 +1,5 @@
+ToolSet: 17.0 (local)@D:\Sofeware\Visual Studio Community 2022
+Ninja: 1.12.1@D:\Sofeware\CLion 2024.3.4\bin\ninja\win\x64\ninja.exe
+Options: 
+
+Options:-DCMAKE_MAKE_PROGRAM=D:/Sofeware/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe

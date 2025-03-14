@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "CMakeFiles\\opencv4110.dir\\main.cpp.obj",
+            "outputs": [
+                "D:\\Document\\UGit\\code\\opencv411\\cmake-build-debug\\vc140.pdb",
+                "CMakeFiles\\opencv4110.dir\\main.cpp.obj.ddi"
+            ],
+            "requires": []
+        }
+    ]
+}
