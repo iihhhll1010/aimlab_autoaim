@@ -4,14 +4,14 @@
 
 class WindowShot {
 public:
-    HWND hwnd;
+    [[maybe_unused]] HWND hwnd;
     int width, height, x, y;
-    RECT rect;
+    RECT rect{};
     LPVOID shotData;
-    HDC screenDC, compatibleDC;
-    HBITMAP hBitmap;
+    HDC screenDC{}, compatibleDC{};
+    HBITMAP hBitmap{};
 
-    WindowShot(HWND hwnd) : hwnd(hwnd), shotData(nullptr) {
+    explicit WindowShot(HWND hwnd) : hwnd(hwnd), shotData(nullptr) {
         //如果窗口小化 就将其展示
         if (IsIconic(hwnd)) {
             ShowWindow(hwnd, SW_RESTORE);
@@ -27,7 +27,7 @@ public:
     }
 
     //获取窗口的位置和尺寸
-    RECT getWindowLoc(HWND hwnd) {
+    static RECT getWindowLoc(HWND hwnd) {
         RECT frame;
         DwmGetWindowAttribute(hwnd, DWMWA_EXTENDED_FRAME_BOUNDS, &frame, sizeof(RECT));
         std::cout << "窗口位置：(" << frame.left << ", " << frame.top << ")" << std::endl;
@@ -42,7 +42,7 @@ public:
         shotData = new char[width * height * 4];  // 每个像素4字节 (BGRA)
 
         //获取屏幕的设备上下文
-        screenDC = GetDC(NULL);
+        screenDC = GetDC(nullptr);
         compatibleDC = CreateCompatibleDC(screenDC);
 
         //创建位图对象
@@ -59,7 +59,7 @@ public:
         cv::Mat windowMat(height, width, CV_8UC4, shotData);
 
         //释放资源
-        ReleaseDC(NULL, screenDC);
+        ReleaseDC(nullptr, screenDC);
         DeleteDC(compatibleDC);
         DeleteObject(hBitmap);
 

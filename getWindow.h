@@ -9,7 +9,7 @@
 #define TARGET_WindowTitle "aimlab_tb"
 
 //目标窗口的句柄
-HWND targetWindow = NULL;
+HWND targetWindow = nullptr;
 //用于临时存放窗口标题
 char windowText[256];
 
@@ -43,7 +43,7 @@ BOOL CALLBACK WindowEnumerationCallback(HWND hwnd, LPARAM lParam) {
 HWND getWindowHWND()
 {
     //初始化结果变量
-    targetWindow = NULL;
+    targetWindow = nullptr;
     //使用EnumWindows函数枚举所有窗口，并传递给回调函数处理  
     EnumWindows(WindowEnumerationCallback, NULL);
     //返回目标窗口句柄

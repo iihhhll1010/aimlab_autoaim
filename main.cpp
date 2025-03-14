@@ -45,13 +45,13 @@ Point getCenterPoint(const Rect& rect) {
     //获取矩形左上角坐标以及宽高
     int x = rect.x, y = rect.y, width = rect.width, height = rect.height;
     int centerx = x + width / 2, centery = y + height / 2;
-    return Point(centerx, centery);
+    return {centerx, centery};
 }
 
 int main() {
     //获取窗口句柄
     HWND hwnd = getWindowHWND();
-    if (hwnd != NULL) {
+    if (hwnd != nullptr) {
         cout << "找到窗口句柄: " << hwnd << endl;
     }
     else {
@@ -72,7 +72,7 @@ int main() {
     moveWindow("result", 0, 0);
     resizeWindow("result", Size(1280, 720));
 
-    while (1) {
+    while (true) {
         //获取窗口截图
         Mat src = windowShot.getWindowMat();
         //检查图像是否获取成功
